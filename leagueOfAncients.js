@@ -1,7 +1,7 @@
 const axios = require('axios');
 const ethers = require('ethers');
 const LOA_URL= 'https://loapi.leagueofancients.com/api/create';
-const REF_USER = '0x5241aa99a776866296D1d695C02bB2E31B3Ff998'; //Your ETH Wallet Address
+const REF_USER = ''; //Your ETH Wallet Address
 
 let synchronous_request = function (url, params) {
     if (params == undefined) {
