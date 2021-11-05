@@ -1,0 +1,32 @@
+const axios = require('axios');
+const ethers = require('ethers');
+const LOA_URL= 'https://loapi.leagueofancients.com/api/create';
+const REF_USER = ''; //Your ETH Wallet Address
+const REFFERAL_LINK = ''; //Your Referral Code
+
+let synchronous_request = function (url, params) {
+    if (params == undefined) {
+        return new Promise(function (resolve, reject) {
+            axios.get(url).then(res => {
+                resolve(res.data);
+            }).catch(err => {
+                reject(err)
+            });
+        })
+    } else {
+        return new Promise(function (resolve, reject) {
+            axios.post(url, params).then(res => {
+                resolve(res.data);
+            }).catch(err => {
+                reject(err);
+            });
+        })
+    }
+}
+
+start()
+async function start() {
+    const account = ethers.Wallet.createRandom();
+    let response = await synchronous_request(LOA_URL, { 'ref_user_id': REF_USER,'referral_link':REFFERAL_LINK,'wallet_address':account.address })
+    console.log(response);
+}
